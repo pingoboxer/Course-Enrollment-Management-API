@@ -32,7 +32,7 @@ class EnrollmentService:
     @staticmethod
     def get_student_enrollments(user_id: int):
         EnrollmentService._get_user(user_id)
-
+        
         return [
             e for e in enrollments
             if e["user_id"] == user_id

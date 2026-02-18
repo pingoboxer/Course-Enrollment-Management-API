@@ -37,6 +37,16 @@ class CourseService:
     def get_course_by_id(course_id: int):
         course = CourseService._find_course(course_id)
         return course
+    
+    @staticmethod
+    def get_course_enrollments(course_id: int, role: str):
+        CourseService._ensure_admin(role)
+        CourseService._find_course(course_id)
+
+        return [
+            e for e in enrollments
+            if e["course_id"] == course_id
+        ]
 
     
     # Update Course
@@ -66,7 +76,7 @@ class CourseService:
         CourseService._ensure_admin(role)
 
         course = CourseService._find_course(course_id)
-
+        global enrollments
         # Remove related enrollments
         enrollments[:] = [
             e for e in enrollments
@@ -114,7 +124,7 @@ class CourseService:
                     continue
                 raise HTTPException(
                     status_code=400,
-                    detail="Course code already exists"
+                    detail="Course code must be unique"
                 )
 
     @staticmethod

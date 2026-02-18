@@ -1,9 +1,10 @@
-from fastapi import APIRouter, status
+from fastapi import APIRouter, HTTPException, status
 from typing import List
 from app.schemas.course_schema import (
     CourseCreate,
     CourseUpdate,
-    CourseResponse
+    CourseResponse,
+    RoleRequest
 )
 from app.services.course_service import CourseService
 
@@ -21,7 +22,9 @@ def get_all_courses():
 def get_course(course_id: int):
     return CourseService.get_course_by_id(course_id)
 
-
+@router.get("/{course_id}/enrollments")
+def get_course_enrollments(course_id: int, role: str):
+    return CourseService.get_course_enrollments(course_id, role)
 
 # Admin Only
 
@@ -45,5 +48,7 @@ def update_course(course_id: int, request: CourseUpdate):
 
 
 @router.delete("/{course_id}", status_code=status.HTTP_200_OK)
-def delete_course(course_id: int, role: str):
-    return CourseService.delete_course(course_id, role)
+def delete_course(course_id: int, data: RoleRequest):
+    if data.role != "admin":
+        raise HTTPException(status_code=403, detail="Only admins can delete courses")
+    return CourseService.delete_course(course_id, role=data.role)

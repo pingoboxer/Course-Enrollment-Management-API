@@ -30,6 +30,11 @@ class UserService:
         if not user:
             raise HTTPException(status_code=404, detail="User not found")
         return user
+    
+    @staticmethod
+    def get_user_enrollments(user_id: int):
+        user = UserService.get_user_by_id(user_id)
+        return user.get("enrollments", [])
 
     
     # Private Validation Methods

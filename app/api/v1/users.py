@@ -2,6 +2,7 @@ from fastapi import APIRouter, status
 from typing import List
 from app.schemas.user_schema import UserCreate, UserResponse
 from app.services.user_service import UserService
+from app.services.enrollment_service import EnrollmentService
 
 router = APIRouter(prefix="/users", tags=["Users"])
 
@@ -31,3 +32,14 @@ def get_all_users():
 @router.get("/{user_id}", response_model=UserResponse, status_code=status.HTTP_200_OK)
 def get_user(user_id: int):
     return UserService.get_user_by_id(user_id)
+
+
+@router.get("/{user_id}/enrollments")
+def get_user_enrollments(user_id: int):
+    return UserService.get_user_enrollments(user_id)
+
+# Student Views of Enrollments
+
+@router.get("/{user_id}/enrollments", status_code=status.HTTP_200_OK)
+def get_student_enrollments(user_id: int):
+    return EnrollmentService.get_student_enrollments(user_id)

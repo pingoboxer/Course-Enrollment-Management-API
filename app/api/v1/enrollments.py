@@ -40,11 +40,6 @@ def deregister(request: EnrollmentRequest):
 
 
 
-# Student Views of Enrollments
-
-@router.get("/users/{user_id}", status_code=status.HTTP_200_OK)
-def get_student_enrollments(user_id: int):
-    return EnrollmentService.get_student_enrollments(user_id)
 
 
 
@@ -60,7 +55,7 @@ def get_course_enrollments(course_id: int, role: str):
     return EnrollmentService.get_course_enrollments(course_id, role)
 
 
-@router.delete("/admin", status_code=status.HTTP_200_OK)
+@router.delete("/admin/enrollments", status_code=status.HTTP_200_OK)
 def force_deregister(request: AdminForceDeregisterRequest):
     return EnrollmentService.force_deregister(
         user_id=request.user_id,

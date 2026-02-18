@@ -121,7 +121,7 @@ def test_student_deregister_success():
         "role": "student"
     })
 
-    response = client.delete("/enrollments", json={
+    response = client.request("DELETE", "/enrollments", json={
         "user_id": 1,
         "course_id": 1,
         "role": "student"
@@ -135,7 +135,7 @@ def test_deregister_nonexistent_enrollment():
     create_student()
     create_course()
 
-    response = client.delete("/enrollments", json={
+    response = client.request("DELETE", "/enrollments", json={
         "user_id": 1,
         "course_id": 1,
         "role": "student"
@@ -204,7 +204,7 @@ def test_admin_force_deregister():
         "role": "student"
     })
 
-    response = client.delete("/admin/enrollments", json={
+    response = client.request("DELETE", "/admin/enrollments", json={
         "user_id": 1,
         "course_id": 1,
         "role": "admin"

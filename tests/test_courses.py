@@ -118,7 +118,7 @@ def test_admin_delete_course_success():
         "role": "admin"
     })
 
-    response = client.delete("/courses/1", json={
+    response = client.request("DELETE", "/courses/1", json={
         "role": "admin"
     })
 
@@ -133,7 +133,7 @@ def test_student_cannot_delete_course():
         "role": "admin"
     })
 
-    response = client.delete("/courses/1", json={
+    response = client.request("DELETE", "/courses/1", json={
         "role": "student"
     })
 
