@@ -1,5 +1,6 @@
 from fastapi import HTTPException
 from app.core.storage import users
+from app.services.enrollment_service import EnrollmentService
 
 
 class UserService:
@@ -33,8 +34,7 @@ class UserService:
     
     @staticmethod
     def get_user_enrollments(user_id: int):
-        user = UserService.get_user_by_id(user_id)
-        return user.get("enrollments", [])
+        return EnrollmentService.get_student_enrollments(user_id)
 
     
     # Private Validation Methods

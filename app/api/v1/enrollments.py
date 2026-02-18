@@ -2,7 +2,7 @@ from fastapi import APIRouter, status
 from pydantic import BaseModel
 from app.services.enrollment_service import EnrollmentService
 
-router = APIRouter(prefix="/enrollments", tags=["Enrollments"])
+router = APIRouter()
 
 
 # Request Schemas
@@ -21,7 +21,7 @@ class AdminForceDeregisterRequest(BaseModel):
 
 # Student Enrollment Endpoints
 
-@router.post("", status_code=status.HTTP_201_CREATED)
+@router.post("/enrollments", status_code=status.HTTP_201_CREATED)
 def enroll(request: EnrollmentRequest):
     return EnrollmentService.enroll(
         user_id=request.user_id,
@@ -30,7 +30,7 @@ def enroll(request: EnrollmentRequest):
     )
 
 
-@router.delete("", status_code=status.HTTP_200_OK)
+@router.delete("/enrollments", status_code=status.HTTP_200_OK)
 def deregister(request: EnrollmentRequest):
     return EnrollmentService.deregister(
         user_id=request.user_id,
@@ -45,12 +45,12 @@ def deregister(request: EnrollmentRequest):
 
 # Admin Endpoints
 
-@router.get("", status_code=status.HTTP_200_OK)
+@router.get("/enrollments", status_code=status.HTTP_200_OK)
 def get_all_enrollments(role: str):
     return EnrollmentService.get_all_enrollments(role)
 
 
-@router.get("/courses/{course_id}", status_code=status.HTTP_200_OK)
+@router.get("enrollments/courses/{course_id}", status_code=status.HTTP_200_OK)
 def get_course_enrollments(course_id: int, role: str):
     return EnrollmentService.get_course_enrollments(course_id, role)
 
