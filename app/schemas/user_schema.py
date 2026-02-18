@@ -5,3 +5,9 @@ class UserCreate(BaseModel):
     name: str
     email: EmailStr
     role: Literal["student", "admin"]
+
+class UserResponse(BaseModel):
+    id: int
+    name: str
+    email: EmailStr
+    role: Literal["student", "admin"]
