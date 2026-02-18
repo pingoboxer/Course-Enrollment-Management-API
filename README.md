@@ -44,11 +44,19 @@ app/
 │
 ├── core/            # Shared storage &configuration
 |
+|
+|
 ├── schemas/          # Pydantic models (input/output validation)
+|
+|
 |
 ├── services/           # Business logic layer
 |
+|
+|
 ├── api/v1         # API endpoints (thin controllers)
+|
+|
 |
 └── main.py             # Application entry point
 
