@@ -50,9 +50,9 @@ This project follows a **layered architecture pattern**:
 │   │   └── main.cpython-314.pyc
 │   ├── api
 │   │   └── v1
-│   │   ├── courses.py
-│   │   ├── enrollments.py
-│   │   └── users.py
+│   │       ├── courses.py
+│   │       ├── enrollments.py
+│   │       └── users.py
 │   ├── core
 │   │   ├── __init__.py
 │   │   ├── __pycache__
