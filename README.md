@@ -260,6 +260,8 @@ This project demonstrates:
 
 ## 👨‍💻 Author
 
+```
 Raphael Kpamor
 Backend Engineering Student
 Passionate about scalable backend systems and clean architecture.
+```
