@@ -1,3 +1,5 @@
+
+
 # 📘 Event Management & Enrollment API
 
 A modern, modular backend system built with **FastAPI** that manages users, courses, and student enrollments.
@@ -39,33 +41,53 @@ This project demonstrates clean architecture principles, role-based access contr
 
 This project follows a **layered architecture pattern**:
 
-
-app/
-│
-├── core/            # Shared storage &configuration
-|
-|
-|
-├── schemas/          # Pydantic models (input/output validation)
-|
-|
-|
-├── services/           # Business logic layer
-|
-|
-|
-├── api/v1         # API endpoints (thin controllers)
-|
-|
-|
-└── main.py             # Application entry point
-
+```
+├── README.md
+├── app
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-314.pyc
+│   │   └── main.cpython-314.pyc
+│   ├── api
+│   │   └── v1
+│   │   ├── courses.py
+│   │   ├── enrollments.py
+│   │   └── users.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   └── storage.py
+│   ├── main.py
+│   ├── schemas
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   ├── common.py
+│   │   ├── course_schema.py
+│   │   ├── enrollment_schema.py
+│   │   └── user_schema.py
+│   └── services
+│       ├── __init__.py
+│       ├── __pycache__
+│       ├── course_service.py
+│       ├── enrollment_service.py
+│       └── user_service.py
+├── env
+│   
+├── pytest.ini
+├── requirements.txt
+└── tests
+    ├── __pycache__
+    │   
+    ├── test_courses.py
+    ├── test_enrollments.py
+    └── test_users.py
+```
 
 ### 🔹 Separation of Concerns
 
 | Layer   | Responsibility          |
 | ------- | ----------------------- |
-| Api/v1  | HTTP handling only      |
+| Router  | HTTP handling only      |
 | Schema  | Input/output validation |
 | Service | Business logic          |
 | Storage | In-memory data store    |
@@ -126,8 +148,9 @@ Test coverage includes:
 
 Run tests:
 
-
+```bash
 pytest
+```
 
 ---
 
@@ -135,57 +158,69 @@ pytest
 
 ### 1️⃣ Clone the Repository
 
-
+```bash
 git clone <your-repo-url>
 cd <project-folder>
-
+```
 
 ### 2️⃣ Create Virtual Environment
 
+```bash
 python -m venv venv
 source venv/bin/activate  # Mac/Linux
 venv\Scripts\activate     # Windows
-
+```
 
 ### 3️⃣ Install Dependencies
 
+```bash
 pip install -r requirements.txt
-
+```
 
 ### 4️⃣ Run the Server
 
-
+```bash
 uvicorn app.main:app --reload
+```
 
+Open API docs:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+---
 
 ## 📌 API Overview
 
 ### Users
 
+```
 POST   /users
 GET    /users
 GET    /users/{id}
+```
 
 ### Courses
 
-
+```
 GET    /courses
 GET    /courses/{id}
 POST   /courses        (admin only)
 PUT    /courses/{id}   (admin only)
 DELETE /courses/{id}   (admin only)
-
+```
 
 ### Enrollments
 
-
+```
 POST   /enrollments
 DELETE /enrollments
 GET    /enrollments/users/{user_id}
 GET    /enrollments?role=admin
 GET    /enrollments/courses/{course_id}?role=admin
 DELETE /enrollments/admin
-
+```
 
 ---
 
@@ -223,7 +258,7 @@ This project demonstrates:
 
 ---
 
-## 👨 Author
+## 👨‍💻 Author
 
 Raphael Kpamor
 Backend Engineering Student
