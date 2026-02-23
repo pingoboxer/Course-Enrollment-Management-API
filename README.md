@@ -253,8 +253,9 @@ This project demonstrates:
 ---
 
 ## 👨‍💻 Author
-'''
+
+```
 Kpamor Raphael Terngu
 Backend Engineering Student
 Passionate about scalable backend systems and clean architecture.
-'''
+```
