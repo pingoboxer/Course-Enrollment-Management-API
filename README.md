@@ -1,6 +1,6 @@
 
 
-# 📘 Event Management & Enrollment API
+# 📘 Course Management & Enrollment API
 
 A modern, modular backend system built with **FastAPI** that manages users, courses, and student enrollments.
 
@@ -87,10 +87,10 @@ This project follows a **layered architecture pattern**:
 
 | Layer   | Responsibility          |
 | ------- | ----------------------- |
-| Router  | HTTP handling only      |
+| api/v1  | HTTP handling only      |
 | Schema  | Input/output validation |
-| Service | Business logic          |
-| Storage | In-memory data store    |
+| service | Business logic          |
+| core    | In-memory data store    |
 
 This design ensures:
 
@@ -183,12 +183,6 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
-Open API docs:
-
-```
-http://127.0.0.1:8000/docs
-```
-
 ---
 
 ## 📌 API Overview
@@ -259,7 +253,8 @@ This project demonstrates:
 ---
 
 ## 👨‍💻 Author
-
-Raphael Kpamor
+'''
+Kpamor Raphael Terngu
 Backend Engineering Student
 Passionate about scalable backend systems and clean architecture.
+'''
