@@ -166,9 +166,9 @@ cd <project-folder>
 ### 2️⃣ Create Virtual Environment
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # Mac/Linux
-venv\Scripts\activate     # Windows
+python -m venv env
+source env/bin/activate  # Mac/Linux
+env\Scripts\activate     # Windows
 ```
 
 ### 3️⃣ Install Dependencies
